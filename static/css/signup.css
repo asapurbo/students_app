@@ -1,0 +1,112 @@
+/* signup.css */
+
+.signup-page {
+    background-color: #d1d5db; /* bg-gray-300 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 3rem 1rem;
+}
+
+.signup-container {
+    width: 100%;
+    max-width: 32rem; /* max-w-lg */
+    background-color: #d1d5db; /* bg-gray-300 */
+    border-radius: 1.25rem; /* rounded-xl */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* shadow-2xl */
+    padding: 2.5rem; /* p-10 */
+    color: white;
+}
+
+.signup-title {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: bold;
+    text-align: center;
+    color: #4b5563; /* text-gray-600 */
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* space-y-6 */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500;
+    color: #4b5563; /* text-gray-600 */
+}
+
+.form-input {
+    margin-top: 0.25rem; /* mt-1 */
+    padding: 0.75rem 1rem; /* px-4 py-3 */
+    background-color: #e5e7eb; /* bg-gray-200 */
+    border: 1px solid #d1d5db; /* border-gray-300 */
+    border-radius: 0.5rem; /* rounded-lg */
+    color: #4b5563; /* text-gray-600 */
+    font-size: 0.875rem; /* sm:text-sm */
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: #9ca3af; /* focus:ring-gray-300 */
+    box-shadow: 0 0 0 2px #d1d5db;
+}
+
+.form-error {
+    color: #ef4444; /* text-red-400 */
+    font-size: 0.875rem; /* text-sm */
+    margin-top: 0.5rem; /* mt-1 */
+}
+
+.error-message {
+    background-color: #ef4444; /* bg-red-500 */
+    color: white;
+    font-size: 0.875rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: #696969;
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #4f46e5; /* hover:bg-purple-700 */
+    transform: scale(1.05);
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.login-link-text {
+    color: #6b7280; /* text-gray-500 */
+    text-decoration: underline;
+}
+
+.login-link-text:hover {
+    color: #4b5563; /* hover:text-gray-600 */
+}

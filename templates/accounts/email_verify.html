@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/verify_otp.css' %}">
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/verify_otp.css' %}">
+<form method="POST" class="verify-otp-form">
+    {% csrf_token %}
+    <h2 class="verify-otp-title">
+        🔐 Verify Your OTP
+    </h2>
+    <p class="verify-otp-subtitle">
+        Check the email below for the OTP <span class="verify-otp-email">{{ self_email }}</span>
+    </p>
+    <p class="verify-otp-description">
+        We’ve sent a 6-digit code to your email. Please enter it below to proceed.
+    </p>
+
+    <input
+        type="text"
+        maxlength="6"
+        name="otp"
+        placeholder="Enter OTP"
+        class="verify-otp-input"
+    />
+
+    {% if error %}
+    <div class="verify-otp-error">
+        ⚠️ {{ error }}
+    </div>
+    {% endif %}
+
+    <button type="submit" class="verify-otp-button">
+        Verify OTP
+    </button>
+
+    <p class="verify-otp-footer">
+        Didn’t receive the code?
+        <a href="{% url 'account:resend_verification_email' %}" id="resend-link" class="verify-otp-resend-link">
+            Resend OTP
+        </a>
+    </p>
+
+    <div id="timer" class="verify-otp-timer">
+        <p>Resend OTP in <span id="time">5 minutes</span></p>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<title>Student Form</title>
+<link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div id="main" class="relative">
+    <a id="logout" href="{% url 'account:logout' %}" class="logout-btn">
+        Logout
+    </a>
+
+    <div id="alert" class="alert-box">
+        <div class="flex items-start justify-between gap-4">
+            <p id="alert-message" class="alert-message">
+                ⚠️
+                <span>
+                    If you click next time here, your information will be submitted,<br />
+                    so please verify your information carefully again.
+                    <span>Do you want to proceed to the next page?</span>
+                    <button class="yes_btn">Yes</button>
+                </span>
+            </p>
+            <button id="closeAlert" class="close-btn">🗴</button>
+        </div>
+    </div>
+
+    {% comment %} create an error box {% endcomment %}
+    {% if error %}
+    <div class='error'>
+        <div class='err_con'>
+            {{ error }} <span class='err_cl'>🗴</span>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="form-container" id="form-div">
+        <div class="form-box">
+            <h1 class="form-title">Computer Science and Technology</h1>
+            <h1 class="form-subtitle">Barguna Polytechnic Institute</h1>
+
+            <form class="form" id="form" method="POST">
+                {% csrf_token %}
+                <div class="grid-container">
+                    <div>
+                        <label class="form-label">Name</label>
+                        <input
+                            name="name"
+                            type="text"
+                            placeholder="Enter your name"
+                            class="form-input"
+                        />
+                    </div>
+                    <div>
+                        <label class="form-label">Roll</label>
+                        <input
+                            name="roll"
+                            type="text"
+                            placeholder="Enter roll number"
+                            class="form-input"
+                        />
+                    </div>
+                    <div>
+                        <label class="form-label">Session</label>
+                        <input
+                            name="session"
+                            type="text"
+                            placeholder="e.g., 2019-20"
+                            class="form-input"
+                        />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="form-label">
+                        Industrial Experience or Comments
+                    </label>
+                    <textarea
+                        name="comments"
+                        rows="4"
+                        placeholder="Write your work experience..."
+                        class="form-textarea"
+                    ></textarea>
+                </div>
+
+                <div class="grid-container">
+                    <div>
+                        <label class="form-label">Performance Evaluation</label>
+                        <select class="form-select" name="performance">
+                            <option value="1">Good (80%+)</option>
+                            <option value="2">Average (50%-80%)</option>
+                            <option value="3">Low (Below 50%)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-submit">
+                    <button type="submit"></button>
+                </div>
+            </form>
+
+            <div class="signature-container" id="signature">
+                <h4 class="signature-text">Student's Signature</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block js %}
+<script src="{% static 'js/form.js' %}"></script>
+{% endblock %}

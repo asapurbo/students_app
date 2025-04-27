@@ -1,0 +1,146 @@
+/* Main Styles */
+.main-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.content-container {
+    background-color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    position: relative;
+}
+
+/* Download Button */
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #3182ce;
+    color: white;
+    font-weight: 600;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    top: 70%;
+    transform: translateY(-50%);
+    right: 16px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.download-btn:hover {
+    background-color: #2b6cb0;
+}
+
+/* Content Section */
+.form-container {
+    background-color: white;
+    color: #2d3748;
+    border: 2px dashed #cbd5e0;
+    border-radius: 16px;
+    padding: 40px;
+    width: 100%;
+    max-width: 768px;
+}
+
+.form-title, .form-subtitle {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #6b7280;
+}
+
+.form-subtitle {
+    margin-bottom: 32px;
+}
+
+/* Student Information */
+.student-info {
+    margin-bottom: 24px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.subject-section {
+    margin-top: 40px;
+}
+
+.subject-label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.subject-description {
+    width: 100%;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: white;
+    min-height: 100px;
+}
+
+/* Evaluation Section */
+.evaluation-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+}
+
+.evaluation-label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.evaluation-option {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+    margin-bottom: 8px;
+}
+
+.evaluation-option label {
+    padding-left: 8px;
+}
+
+/* Signature Section */
+.signature-section {
+    text-align: end;
+    margin-top: 28px;
+}
+
+.signature-container {
+    display: inline-block;
+    padding-top: 8px;
+    text-align: center;
+}
+
+.signature-img img {
+    width: 48px;
+    height: 48px;
+}
+
+.signature-text {
+    border-top: 2px solid #6b7280;
+    padding-top: 4px;
+    display: block;
+}

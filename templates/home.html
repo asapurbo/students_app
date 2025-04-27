@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <a href="{% url 'studentsapp:form' %}" style='text-decoration: none; color: black;'>
+        Go back to the form page. 🔙📄
+    </a>
+    <!-- Main Container -->
+    <div class="content-container"
+    >
+        <!-- Download Button -->
+        <a href="{% url 'studentsapp:student_pdf' %}">
+            <div class="download-btn">
+                Download
+            </div>
+        </a>
+        <!-- Content Section -->
+        <div class="form-container">
+            <h1 class="form-title">Computer Science and Technology</h1>
+            <h1 class="form-subtitle">Barguna Polytechnic Institute</h1>
+
+            <!-- Student Information -->
+            <div class="student-info">
+                <div class="info-row">
+                    <div>
+                        <label class="info-label">Name: {{ student.name }}</label>
+                    </div>
+                    <div>
+                        <label class="info-label">Roll: {{ student.roll }}</label>
+                    </div>
+                </div>
+                <div>
+                    <label class="info-label">Session: {{ student.session }}</label>
+                </div>
+            </div>
+
+            <!-- Subject Section -->
+            <div class="subject-section">
+                <label class="subject-label">Interested Subject for Industry Attachment:</label>
+                <div class="subject-description">
+                    {{ student.description }}
+                </div>
+            </div>
+
+            <!-- Evaluation Section -->
+            <div class="evaluation-section">
+                <div>
+                    <label class="evaluation-label">Student's understanding of the subject:</label>
+                    <div>
+                        <!-- Excellent -->
+                        <div class="evaluation-option">
+                            {% if student.evaluation == 1 %}
+                            <span>🗸</span>
+                            {% else %}
+                            <span>🗴</span>
+                            {% endif %}
+                            <label>Excellent (80%+)</label>
+                        </div>
+
+                        <!-- Good -->
+                        <div class="evaluation-option">
+                            {% if student.evaluation == 2 %}
+                            <span>🗸</span>
+                            {% else %}
+                            <span>🗴</span>
+                            {% endif %}
+                            <label>Good (50%-80%)</label>
+                        </div>
+
+                        <!-- Poor -->
+                        <div class="evaluation-option">
+                            {% if student.evaluation == 3 %}
+                            <span>🗸</span>
+                            {% else %}
+                            <span>🗴</span>
+                            {% endif %}
+                            <label>Poor (below 50%)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Signature Section -->
+            <div class="signature-section">
+                <div class="signature-container">
+                    <div class="signature-img">
+                        <img src="{{ student.signature }}" alt="Signature" />
+                    </div>
+                    <span class="signature-text">Student's Signature</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

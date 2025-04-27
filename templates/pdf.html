@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="font-family: Arial, sans-serif; padding: 20px;">
+        <!-- Main Container -->
+        <div style="background-color: white; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 16px; position: relative;">
+
+            <!-- Content Section -->
+            <div style="background-color: white; color: #2d3748; border: 2px dashed #cbd5e0; border-radius: 16px; padding: 40px; width: 100%; max-width: 768px;">
+                <h1 style="font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 16px; color: #6b7280;">
+                    Computer Science and Technology
+                </h1>
+                <h1 style="font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 32px; color: #6b7280;">
+                    Barguna Polytechnic Institute
+                </h1>
+
+                <!-- Student Information -->
+                <div style="margin-bottom: 24px;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <div>
+                            <label style="display: block; font-weight: 500; margin-bottom: 8px;">Name: {{ student.name }}</label>
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: 500; margin-bottom: 15px;">Roll: {{ student.roll }}</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 500; margin-bottom: 8px;">Session: {{ student.session }}</label>
+                    </div>
+                </div>
+
+                <!-- Subject Section -->
+                <div style="margin-top: 40px;">
+                    <label style="display: block; font-weight: 500; margin-bottom: 8px; text-align: center;">
+                        Interested Subject for Industry Attachment:
+                    </label>
+                    <div style="width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; background-color: white; min-height: 100px;">
+                        {{ student.description }}
+                    </div>
+                </div>
+
+                <!-- Evaluation Section -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px;">
+                    <div>
+                        <label style="display: block; font-weight: 500; margin-bottom: 8px;">Student's understanding of the subject:</label>
+                        <div>
+                            <!-- Excellent -->
+                            <div style="display: flex; align-items: center; margin-right: 16px; margin-bottom: 8px;">
+                                {% if student.evaluation == 1 %}
+                                <span>🗸</span>
+                                {% else %}
+                                <span>🗴</span>
+                                {% endif %}
+                                <label style="padding-left: 8px;">Excellent (80%+)</label>
+                            </div>
+
+                            <!-- Good -->
+                            <div style="display: flex; align-items: center; margin-right: 16px; margin-bottom: 8px;">
+                                {% if student.evaluation == 2 %}
+                                <span>🗸</span>
+                                {% else %}
+                                <span>🗴</span>
+                                {% endif %}
+                                <label style="padding-left: 8px;">Good (50%-80%)</label>
+                            </div>
+
+                            <!-- Poor -->
+                            <div style="display: flex; align-items: center; margin-right: 16px; margin-bottom: 8px;">
+                                {% if student.evaluation == 3 %}
+                                <span>🗸</span>
+                                {% else %}
+                                <span>🗴</span>
+                                {% endif %}
+                                <label style="padding-left: 8px;">Poor (below 50%)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Signature Section -->
+                <div style="text-align: end; margin-top: 28px;">
+                    <div style="display: inline-block; padding-top: 8px; text-align: center;">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <!-- Use Absolute URL for Image -->
+                            <img src="{{ student.signature }}" alt="Signature" style="width: 48px; height: 48px;" />
+                        </div>
+                        <span style="border-top: 2px solid #6b7280; padding-top: 4px;">Student's Signature</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

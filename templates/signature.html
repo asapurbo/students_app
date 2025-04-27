@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<title>Student Form</title>
+<link rel="stylesheet" href="{% static 'css/student_form.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <form method="POST" enctype="multipart/form-data" class="form">
+        <div>
+            <p>Due to limited cloud storage, a signature can only be submitted once. 🖊️ I sincerely apologize for the inconvenience. 🙏
+                Please review your signature carefully before submitting, as you will not be able to submit it again. ✅
+                If you are using a mobile device, please sign directly by touching the screen with your finger. 📱✍️
+                If you are using a PC, you will need to use the cursor to create your signature. 🖥️🖱️</p>
+        </div>
+        {% csrf_token %}
+
+        <div id="signature-pad" class="signature-pad">
+            <canvas id="signature-canvas" class="signature-canvas"></canvas>
+        </div>
+
+        <input type="hidden" name="signature" id="signature" />
+
+        <div class="button-container">
+            <button type="button" id="clear" class="clear-button">Clear</button>
+            <button type="submit" class="submit-button">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    var canvas = document.getElementById('signature-canvas');
+    var ctx = canvas.getContext('2d');
+    var isDrawing = false;
+    var lastX = 0;
+    var lastY = 0;
+
+    // Responsive canvas setup
+    function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseleave', stopDrawing);
+
+    document.getElementById('clear').addEventListener('click', clearCanvas);
+
+    function startDrawing(e) {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+
+    function draw(e) {
+        if (!isDrawing) return;
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+
+    function stopDrawing() {
+        isDrawing = false;
+    }
+
+    function clearCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        document.getElementById('signature').value = '';
+    }
+
+    // Submit signature as base64
+    document.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const dataUrl = canvas.toDataURL();
+        document.getElementById('signature').value = dataUrl;
+        this.submit();
+    });
+</script>
+{% endblock %}

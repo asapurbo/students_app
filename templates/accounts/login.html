@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{%block head %}
+<link rel="stylesheet" href="{% static 'css/signin.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="signin-page">
+    <div class="signin-container">
+        <h2 class="signin-title">Sign In</h2>
+        <form method="post" class="signin-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" name="username" id="username" class="form-input" />
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" id="password" class="form-input" />
+            </div>
+
+            {% if error %}
+            <div class="error-message">
+                ⚠️ {{error}}
+            </div>
+            {% endif %}
+
+            {% if email_invalid_error %}
+            <a href="{% url 'account:resend_verification_email' %}">
+                <div class="email-error-message">
+                    <p>Go to the email Verify 📨🏃‍♂️</p>
+                </div>
+            </a>
+            {% endif %}
+
+            <button type="submit" class="submit-btn">
+                Sign In
+            </button>
+        </form>
+        <p class="signup-link">
+            Don't have an account?
+            <a href="{% url 'account:register' %}">Sign Up</a>
+        </p>
+    </div>
+</div>
+{% endblock %}
